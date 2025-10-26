@@ -9,17 +9,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <!-- Target -->
+        <!-- Target selection -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Send to:"
-            android:textStyle="bold"
-            android:paddingBottom="8dp" />
+            android:text="Send to:" />
 
         <RadioGroup
             android:id="@+id/rgTarget"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <RadioButton
@@ -39,90 +37,49 @@
                 android:id="@+id/rbStaff"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Specific Staff" />
+                android:text="Specific Staff IDs" />
         </RadioGroup>
 
-        <!-- Role (only when By Role) -->
+        <!-- Only used when rbRole is selected -->
         <EditText
             android:id="@+id/etRole"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Role (e.g., Bartender)"
-            android:visibility="gone"
-            android:paddingTop="8dp" />
-
-        <!-- Staff picker (only when Specific Staff) -->
-        <TextView
-            android:id="@+id/tvStaffLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Select staff (multi-select)"
-            android:visibility="gone"
-            android:paddingTop="8dp" />
-
-        <Button
-            android:id="@+id/btnPickStaff"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Pick staff…"
+            android:hint="Role (e.g., Security)"
             android:visibility="gone" />
+
+        <!-- Only used when rbStaff is selected (comma-separated IDs) -->
+        <EditText
+            android:id="@+id/etStaffIds"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Staff IDs (e.g., 12,45,61)"
+            android:visibility="gone" />
+
+        <!-- Urgency -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Urgency:" />
+
+        <Spinner
+            android:id="@+id/spUrgency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <!-- Message -->
         <EditText
             android:id="@+id/etMessage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Message to send"
-            android:inputType="textMultiLine"
-            android:minLines="3"
-            android:paddingTop="12dp" />
+            android:hint="Message" />
 
-        <!-- Urgency -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Urgency:"
-            android:textStyle="bold"
-            android:paddingTop="8dp" />
-
-        <RadioGroup
-            android:id="@+id/rgUrgency"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <RadioButton
-                android:id="@+id/rbLow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Low" />
-
-            <RadioButton
-                android:id="@+id/rbNormal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Normal"
-                android:checked="true" />
-
-            <RadioButton
-                android:id="@+id/rbHigh"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="High" />
-        </RadioGroup>
-
+        <!-- Send -->
         <Button
             android:id="@+id/btnSend"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Send Ping"
-            android:paddingTop="12dp" />
+            android:text="Send Ping" />
 
-        <!-- debug inbox button; we’ll wire later -->
-        <Button
-            android:id="@+id/btnOpenInbox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Open Inbox (debug)"
-            android:paddingTop="8dp" />
     </LinearLayout>
 </ScrollView>

@@ -23,11 +23,22 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        String userRole = getIntent().getStringExtra("userRole");
+
+
         // Find the bottom buttons
         btnInventory = findViewById(R.id.btnInventory);
         btnOrders = findViewById(R.id.btnOrders);
         btnTasks = findViewById(R.id.btnTasks);
         btnSettings = findViewById(R.id.btnSettings);
+
+        // Tasks screen — pass role to TasksActivity
+        btnTasks.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, TasksActivity.class);
+            intent.putExtra("userRole", userRole);
+            startActivity(intent);
+        });
+
 
         // Inventory (placeholder)
         btnInventory.setOnClickListener(new View.OnClickListener() {
@@ -47,14 +58,6 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        // Tasks screen
-        btnTasks.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, TasksActivity.class);
-                startActivity(intent);
-            }
-        });
 
         // Settings (placeholder)
         btnSettings.setOnClickListener(new View.OnClickListener() {
@@ -63,5 +66,16 @@ public class HomeActivity extends AppCompatActivity {
                 // Toast.makeText(HomeActivity.this, "Settings clicked", Toast.LENGTH_SHORT).show();
             }
         });
+
+        // Logout
+        Button btnLogout = findViewById(R.id.btnLogout);
+        btnLogout.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
+        });
+
+
     }
 }

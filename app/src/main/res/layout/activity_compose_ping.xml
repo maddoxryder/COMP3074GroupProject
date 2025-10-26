@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Target -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Send to:"
+            android:textStyle="bold"
+            android:paddingBottom="8dp" />
+
+        <RadioGroup
+            android:id="@+id/rgTarget"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/rbAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="All Staff" />
+
+            <RadioButton
+                android:id="@+id/rbRole"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="By Role" />
+
+            <RadioButton
+                android:id="@+id/rbStaff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Specific Staff" />
+        </RadioGroup>
+
+        <!-- Role (only when By Role) -->
+        <EditText
+            android:id="@+id/etRole"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Role (e.g., Bartender)"
+            android:visibility="gone"
+            android:paddingTop="8dp" />
+
+        <!-- Staff picker (only when Specific Staff) -->
+        <TextView
+            android:id="@+id/tvStaffLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select staff (multi-select)"
+            android:visibility="gone"
+            android:paddingTop="8dp" />
+
+        <Button
+            android:id="@+id/btnPickStaff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pick staff…"
+            android:visibility="gone" />
+
+        <!-- Message -->
+        <EditText
+            android:id="@+id/etMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Message to send"
+            android:inputType="textMultiLine"
+            android:minLines="3"
+            android:paddingTop="12dp" />
+
+        <!-- Urgency -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Urgency:"
+            android:textStyle="bold"
+            android:paddingTop="8dp" />
+
+        <RadioGroup
+            android:id="@+id/rgUrgency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/rbLow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Low" />
+
+            <RadioButton
+                android:id="@+id/rbNormal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Normal"
+                android:checked="true" />
+
+            <RadioButton
+                android:id="@+id/rbHigh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="High" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/btnSend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Send Ping"
+            android:paddingTop="12dp" />
+
+        <!-- debug inbox button; we’ll wire later -->
+        <Button
+            android:id="@+id/btnOpenInbox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Open Inbox (debug)"
+            android:paddingTop="8dp" />
+    </LinearLayout>
+</ScrollView>

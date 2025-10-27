@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "ClubManager"
+rootProject.name = "COMP3074UIWireframe"
 include(":app")
  

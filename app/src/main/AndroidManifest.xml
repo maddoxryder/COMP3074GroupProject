@@ -4,34 +4,32 @@
 
     <application
         android:allowBackup="true"
-        android:dataExtractionRules="@xml/data_extraction_rules"
-        android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.COMP3074UIWireframe">
+        android:theme="@style/Theme.ClubManager"
+        tools:targetApi="31">
+
+        <!-- ✅ Main launcher screen -->
         <activity
-            android:name=".TasksActivity"
-            android:exported="false" />
-        <activity
-            android:name=".OrdersActivity"
-            android:exported="false" />
-        <activity
-            android:name=".InventoryActivity"
-            android:exported="false" />
-        <activity
-            android:name=".HomeActivity"
-            android:exported="false" />
-        <activity
-            android:name=".LoginActivity"
+            android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Secondary screens -->
+        <activity
+            android:name=".ui.ping.ComposePingActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.ping.InboxActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>

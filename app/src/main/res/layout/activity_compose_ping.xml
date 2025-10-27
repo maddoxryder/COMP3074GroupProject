@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Target selection -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Send to:" />
+
+        <RadioGroup
+            android:id="@+id/rgTarget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/rbAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="All Staff" />
+
+            <RadioButton
+                android:id="@+id/rbRole"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="By Role" />
+
+            <RadioButton
+                android:id="@+id/rbStaff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Specific Staff IDs" />
+        </RadioGroup>
+
+        <!-- Only used when rbRole is selected -->
+        <EditText
+            android:id="@+id/etRole"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Role (e.g., Security)"
+            android:visibility="gone" />
+
+        <!-- Only used when rbStaff is selected (comma-separated IDs) -->
+        <EditText
+            android:id="@+id/etStaffIds"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Staff IDs (e.g., 12,45,61)"
+            android:visibility="gone" />
+
+        <!-- Urgency -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Urgency:" />
+
+        <Spinner
+            android:id="@+id/spUrgency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- Message -->
+        <EditText
+            android:id="@+id/etMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Message" />
+
+        <!-- Send -->
+        <Button
+            android:id="@+id/btnSend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Send Ping" />
+
+    </LinearLayout>
+</ScrollView>

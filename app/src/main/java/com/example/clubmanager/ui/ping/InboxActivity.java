@@ -23,36 +23,38 @@ public class InboxActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inbox);
 
-        // Connect the ListView from layout
-        ListView list = findViewById(R.id.listPings);
+        // ✅ Enable back arrow in the top bar
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setTitle("Ping Inbox");
+        }
 
-        // Retrieve all pings from the repo
+        // Retrieve and display pings
+        ListView list = findViewById(R.id.listPings);
         List<Ping> pings = ServiceLocator.repo.getPings();
 
-        // Format for displaying time
         SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss", Locale.getDefault());
-
-        // Create a readable list of strings for display
         List<String> rows = new ArrayList<>();
 
         for (Ping p : pings) {
-            // Format the creation time (convert millis to readable time)
             String when = df.format(new Date(p.getCreatedAtMillis()));
-
-            // Retrieve target type (or however you want to display it)
-            String targetLabel = p.getTarget() != null ? p.getTarget().name() : "Unknown";
-
-            // Combine information into one line per Ping
-            String displayText = when + " • " + targetLabel + " • " + p.getMessage();
-            rows.add(displayText);
+            String targetLabel = (p.getTarget() != null) ? p.getTarget().name() : "General";
+            rows.add(when + " • " + targetLabel + " • " + p.getMessage());
         }
 
-        // Attach the data to the ListView
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_list_item_1,
                 rows
         );
+
         list.setAdapter(adapter);
+    }
+
+    // ✅ Handle back arrow click
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

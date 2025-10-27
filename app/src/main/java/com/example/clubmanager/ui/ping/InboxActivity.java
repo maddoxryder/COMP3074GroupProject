@@ -6,7 +6,8 @@ import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.clubmanager.R;
+import com.example.comp3074uiwireframe.R;
+
 import com.example.clubmanager.data.models.Ping;
 import com.example.clubmanager.data.repo.ServiceLocator;
 

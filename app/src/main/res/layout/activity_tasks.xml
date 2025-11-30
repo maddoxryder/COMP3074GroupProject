@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tasksRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F4F5F7"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <Button
+            android:id="@+id/backButtonTasks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="← back"
+            android:textAllCaps="false" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="tasks"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="#222222"
+            android:gravity="center" />
+
+        <View
+            android:layout_width="40dp"
+            android:layout_height="1dp" />
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="#FFFFFF"
+        android:elevation="3dp"
+        app:cardCornerRadius="16dp"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="manager tools"
+                android:textSize="14sp"
+                android:textColor="#777777" />
+
+            <EditText
+                android:id="@+id/inputTask"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="enter a new task"
+                android:padding="10dp"
+                android:layout_marginTop="8dp"
+                android:visibility="gone"
+                android:background="@android:drawable/edit_text" />
+
+            <Button
+                android:id="@+id/btnAddTask"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="add task"
+                android:textAllCaps="false"
+                android:backgroundTint="#2196F3"
+                android:textColor="#FFFFFF"
+                android:layout_marginTop="8dp"
+                android:visibility="gone" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="assigned tasks"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:textColor="#222222"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="4dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:id="@+id/taskContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+</LinearLayout>

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#F4F5F7">
 
     <LinearLayout
         android:orientation="vertical"
@@ -9,77 +10,115 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <!-- Target selection -->
-        <TextView
-            android:layout_width="wrap_content"
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Send to:" />
+            android:elevation="4dp"
+            android:backgroundTint="#FFFFFF"
+            app:cardCornerRadius="16dp"
+            xmlns:app="http://schemas.android.com/apk/res-auto">
 
-        <RadioGroup
-            android:id="@+id/rgTarget"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <RadioButton
-                android:id="@+id/rbAll"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="All Staff" />
+                android:orientation="vertical"
+                android:padding="16dp">
 
-            <RadioButton
-                android:id="@+id/rbRole"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="By Role" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="send ping"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:textColor="#222222" />
 
-            <RadioButton
-                android:id="@+id/rbStaff"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Specific Staff IDs" />
-        </RadioGroup>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="send to:"
+                    android:layout_marginTop="12dp"
+                    android:textColor="#555555" />
 
-        <!-- Only used when rbRole is selected -->
-        <EditText
-            android:id="@+id/etRole"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Role (e.g., Security)"
-            android:visibility="gone" />
+                <RadioGroup
+                    android:id="@+id/rgTarget"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp">
 
-        <!-- Only used when rbStaff is selected (comma-separated IDs) -->
-        <EditText
-            android:id="@+id/etStaffIds"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Staff IDs (e.g., 12,45,61)"
-            android:visibility="gone" />
+                    <RadioButton
+                        android:id="@+id/rbAll"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="all staff" />
 
-        <!-- Urgency -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Urgency:" />
+                    <RadioButton
+                        android:id="@+id/rbRole"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="by role" />
 
-        <Spinner
-            android:id="@+id/spUrgency"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+                    <RadioButton
+                        android:id="@+id/rbStaff"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="specific staff ids" />
+                </RadioGroup>
 
-        <!-- Message -->
-        <EditText
-            android:id="@+id/etMessage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Message" />
+                <EditText
+                    android:id="@+id/etRole"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="role (e.g., security)"
+                    android:visibility="gone"
+                    android:layout_marginTop="8dp"
+                    android:background="@android:drawable/edit_text"
+                    android:padding="8dp" />
 
-        <!-- Send -->
-        <Button
-            android:id="@+id/btnSend"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Send Ping" />
+                <EditText
+                    android:id="@+id/etStaffIds"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="staff ids (e.g., 12,45,61)"
+                    android:visibility="gone"
+                    android:layout_marginTop="8dp"
+                    android:background="@android:drawable/edit_text"
+                    android:padding="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="urgency:"
+                    android:layout_marginTop="12dp"
+                    android:textColor="#555555" />
+
+                <Spinner
+                    android:id="@+id/spUrgency"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp" />
+
+                <EditText
+                    android:id="@+id/etMessage"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:hint="message"
+                    android:layout_marginTop="12dp"
+                    android:gravity="top|start"
+                    android:background="@android:drawable/edit_text"
+                    android:padding="8dp" />
+
+                <Button
+                    android:id="@+id/btnSend"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="send ping"
+                    android:layout_marginTop="16dp"
+                    android:backgroundTint="#2196F3"
+                    android:textColor="#FFFFFF"
+                    android:textAllCaps="false" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
     </LinearLayout>
 </ScrollView>

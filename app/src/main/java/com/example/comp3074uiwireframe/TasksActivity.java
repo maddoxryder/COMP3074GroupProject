@@ -4,7 +4,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONArray;
@@ -13,11 +12,12 @@ import org.json.JSONException;
 public class TasksActivity extends AppCompatActivity {
 
     private LinearLayout taskContainer;
-    private EditText taskInput;
-    private Button assignButton;
-    private String userRole;
+    private EditText inputTask;
+    private Button btnAddTask;
     private SharedPreferences prefs;
-    private static final String PREFS_KEY = "task_list";
+
+    private String userRole;
+    private static final String PREF_KEY = "task_list";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,126 +27,105 @@ public class TasksActivity extends AppCompatActivity {
         userRole = getIntent().getStringExtra("userRole");
         prefs = getSharedPreferences("TasksPrefs", MODE_PRIVATE);
 
-        Button backButton = findViewById(R.id.backButtonTasks);
-        backButton.setOnClickListener(v -> finish());
-
+        Button back = findViewById(R.id.backButtonTasks);
         taskContainer = findViewById(R.id.taskContainer);
+        inputTask = findViewById(R.id.inputTask);
+        btnAddTask = findViewById(R.id.btnAddTask);
 
+        back.setOnClickListener(v -> finish());
+
+        // manager can add tasks
         if ("manager".equals(userRole)) {
-            taskInput = new EditText(this);
-            taskInput.setHint("Enter task description");
+            inputTask.setVisibility(View.VISIBLE);
+            btnAddTask.setVisibility(View.VISIBLE);
 
-            assignButton = new Button(this);
-            assignButton.setText("Assign Task");
-
-            assignButton.setOnClickListener(v -> {
-                String task = taskInput.getText().toString().trim();
-                if (!task.isEmpty()) {
-                    addTask(task, false);
-                    saveTask(task, false);
-                    taskInput.setText("");
-                }
+            btnAddTask.setOnClickListener(v -> {
+                String text = inputTask.getText().toString().trim();
+                if (text.isEmpty()) return;
+                addTask(text, false);
+                saveTask(text, false);
+                inputTask.setText("");
             });
-
-            taskContainer.addView(taskInput, 0);
-            taskContainer.addView(assignButton, 1);
         }
 
         loadTasks();
     }
 
-    private void addTask(String description, boolean completed) {
-        LinearLayout taskRow = new LinearLayout(this);
-        taskRow.setOrientation(LinearLayout.HORIZONTAL);
-
-        CheckBox taskCheckBox = new CheckBox(this);
-        taskCheckBox.setText(description);
-        taskCheckBox.setChecked(completed);
-
-        taskCheckBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            updateTaskStatus(description, isChecked);
-            Toast.makeText(this,
-                    isChecked ? "Task marked complete" : "Task marked incomplete",
-                    Toast.LENGTH_SHORT).show();
-        });
-
-        taskRow.addView(taskCheckBox);
-
-        if ("manager".equals(userRole)) {
-            Button deleteButton = new Button(this);
-            deleteButton.setText("Delete");
-            deleteButton.setOnClickListener(v -> {
-                taskContainer.removeView(taskRow);
-                deleteTask(description);
-                Toast.makeText(this, "Task deleted", Toast.LENGTH_SHORT).show();
-            });
-            taskRow.addView(deleteButton);
-        }
-
-        taskContainer.addView(taskRow);
-    }
-
-
-    private void saveTask(String description, boolean completed) {
-        try {
-            JSONArray taskArray = new JSONArray(prefs.getString(PREFS_KEY, "[]"));
-            JSONArray newTask = new JSONArray();
-            newTask.put(description);
-            newTask.put(completed);
-            taskArray.put(newTask);
-            prefs.edit().putString(PREFS_KEY, taskArray.toString()).apply();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
-
     private void loadTasks() {
         try {
-            JSONArray taskArray = new JSONArray(prefs.getString(PREFS_KEY, "[]"));
-            for (int i = 0; i < taskArray.length(); i++) {
-                JSONArray task = taskArray.getJSONArray(i);
-                String description = task.getString(0);
-                boolean completed = task.getBoolean(1);
-                addTask(description, completed);
+            JSONArray arr = new JSONArray(prefs.getString(PREF_KEY, "[]"));
+            for (int i = 0; i < arr.length(); i++) {
+                JSONArray t = arr.getJSONArray(i);
+                String desc = t.getString(0);
+                boolean done = t.getBoolean(1);
+                addTask(desc, done);
             }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        } catch (Exception e) { e.printStackTrace(); }
     }
 
-    private void updateTaskStatus(String description, boolean completed) {
+    private void addTask(String text, boolean completed) {
+        // inflate task row xml
+        View row = getLayoutInflater().inflate(R.layout.task_item, null);
+
+        CheckBox chk = row.findViewById(R.id.checkTask);
+        Button btnDelete = row.findViewById(R.id.btnDeleteTask);
+
+        chk.setText(text);
+        chk.setChecked(completed);
+
+        // staff cannot delete tasks
+        if ("manager".equals(userRole)) {
+            btnDelete.setVisibility(View.VISIBLE);
+        }
+
+        chk.setOnCheckedChangeListener((buttonView, isChecked) ->
+                updateTask(text, isChecked));
+
+        btnDelete.setOnClickListener(v -> {
+            taskContainer.removeView(row);
+            deleteTask(text);
+        });
+
+        taskContainer.addView(row);
+    }
+
+    private void saveTask(String text, boolean completed) {
         try {
-            JSONArray taskArray = new JSONArray(prefs.getString(PREFS_KEY, "[]"));
-            for (int i = 0; i < taskArray.length(); i++) {
-                JSONArray task = taskArray.getJSONArray(i);
-                if (task.getString(0).equals(description)) {
-                    task.put(1, completed);
+            JSONArray arr = new JSONArray(prefs.getString(PREF_KEY, "[]"));
+            JSONArray t = new JSONArray();
+            t.put(text);
+            t.put(completed);
+            arr.put(t);
+            prefs.edit().putString(PREF_KEY, arr.toString()).apply();
+        } catch (JSONException e) { e.printStackTrace(); }
+    }
+
+    private void updateTask(String text, boolean completed) {
+        try {
+            JSONArray arr = new JSONArray(prefs.getString(PREF_KEY, "[]"));
+            for (int i = 0; i < arr.length(); i++) {
+                JSONArray t = arr.getJSONArray(i);
+                if (t.getString(0).equals(text)) {
+                    t.put(1, completed);
                     break;
                 }
             }
-            prefs.edit().putString(PREFS_KEY, taskArray.toString()).apply();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+            prefs.edit().putString(PREF_KEY, arr.toString()).apply();
+        } catch (Exception e) { e.printStackTrace(); }
     }
 
-
-
-
-    private void deleteTask(String description) {
+    private void deleteTask(String text) {
         try {
-            JSONArray taskArray = new JSONArray(prefs.getString(PREFS_KEY, "[]"));
-            JSONArray newArray = new JSONArray();
-            for (int i = 0; i < taskArray.length(); i++) {
-                JSONArray task = taskArray.getJSONArray(i);
-                if (!task.getString(0).equals(description)) {
-                    newArray.put(task);
+            JSONArray arr = new JSONArray(prefs.getString(PREF_KEY, "[]"));
+            JSONArray newArr = new JSONArray();
+
+            for (int i = 0; i < arr.length(); i++) {
+                JSONArray t = arr.getJSONArray(i);
+                if (!t.getString(0).equals(text)) {
+                    newArr.put(t);
                 }
             }
-            prefs.edit().putString(PREFS_KEY, newArray.toString()).apply();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+            prefs.edit().putString(PREF_KEY, newArr.toString()).apply();
+        } catch (Exception e) { e.printStackTrace(); }
     }
-
 }

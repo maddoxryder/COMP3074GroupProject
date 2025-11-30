@@ -4,9 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    card_view:cardCornerRadius="12dp"
+    card_view:cardCornerRadius="16dp"
     card_view:cardElevation="4dp"
-    android:padding="12dp">
+    android:foreground="?android:attr/selectableItemBackground"
+    android:padding="10dp">
 
     <LinearLayout
         android:orientation="horizontal"
@@ -14,51 +15,51 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical">
 
-        <!-- Item Name -->
         <TextView
             android:id="@+id/tvItemName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:text="Item Name"
+            android:text="item name"
             android:textSize="16sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:textColor="#222222" />
 
-        <!-- Decrease Button -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnDecrease"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="–"/>
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="–"
+            android:textSize="18sp" />
 
-        <!-- Quantity -->
         <TextView
             android:id="@+id/tvQuantity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0"
             android:textSize="16sp"
-            android:padding="12dp"/>
+            android:padding="8dp"
+            android:textColor="#333333" />
 
-        <!-- Increase Button -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnIncrease"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="+"/>
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="+"
+            android:textSize="18sp" />
 
-        <!-- Low Stock Badge -->
         <TextView
             android:id="@+id/tvLowStock"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Low"
+            android:text="low"
             android:textColor="@android:color/holo_red_dark"
             android:background="@drawable/badge_background"
             android:padding="4dp"
             android:visibility="gone"
-            android:layout_marginStart="8dp"/>
+            android:layout_marginStart="8dp"
+            android:textSize="11sp" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

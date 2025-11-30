@@ -60,12 +60,11 @@ public class HomeActivity extends AppCompatActivity {
 
 
         // Settings (placeholder)
-        btnSettings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Toast.makeText(HomeActivity.this, "Settings clicked", Toast.LENGTH_SHORT).show();
-            }
+        btnSettings.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
+            startActivity(intent);
         });
+
 
         // Logout
         Button btnLogout = findViewById(R.id.btnLogout);

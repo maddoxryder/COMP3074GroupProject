@@ -75,6 +75,15 @@ public class HomeActivity extends AppCompatActivity {
             finish();
         });
 
+        findViewById(R.id.imgProfile).setOnClickListener(v -> openProfile(userRole));
+        findViewById(R.id.tvProfile).setOnClickListener(v -> openProfile(userRole));
+    }
+
+    private void openProfile(String userRole) {
+        Intent intent = new Intent(HomeActivity.this, UserProfileActivity.class);
+        intent.putExtra("userRole", userRole);
+        startActivity(intent);
 
     }
+
 }

@@ -7,12 +7,31 @@
     android:layout_height="match_parent"
     android:background="#F4F5F7">
 
+    <!-- Back Button Row -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="start">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:contentDescription="Back"
+            android:padding="4dp"
+            android:src="@drawable/outline_arrow_circle_left_24" />
+    </LinearLayout>
+
+    <!-- Profile Picture -->
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:src="@mipmap/ic_launcher_round"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp" />
 
+    <!-- Name -->
     <TextView
         android:id="@+id/tvUserName"
         android:layout_width="wrap_content"
@@ -23,6 +42,7 @@
         android:textColor="#222222"
         android:layout_marginBottom="8dp" />
 
+    <!-- Role -->
     <TextView
         android:id="@+id/tvUserRole"
         android:layout_width="wrap_content"
@@ -32,6 +52,7 @@
         android:textColor="#777777"
         android:layout_marginBottom="20dp" />
 
+    <!-- Edit button -->
     <Button
         android:id="@+id/btnEditProfile"
         android:layout_width="wrap_content"

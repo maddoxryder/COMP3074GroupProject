@@ -35,13 +35,13 @@ public class ComposePingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compose_ping);
 
-        // ✅ Enable back arrow + title
+        //  Enable back arrow + title
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setTitle("Compose Ping");
         }
 
-        // ✅ Hook up views
+        //  Hook up views
         rgTarget = findViewById(R.id.rgTarget);
         rbAll = findViewById(R.id.rbAll);
         rbRole = findViewById(R.id.rbRole);
@@ -54,7 +54,7 @@ public class ComposePingActivity extends AppCompatActivity {
         spUrgency = findViewById(R.id.spUrgency);
         btnSend = findViewById(R.id.btnSend);
 
-        // ✅ Populate urgency spinner (Normal / High / Low)
+        //  Populate urgency spinner (Normal / High / Low)
         ArrayAdapter<String> urgencyAdapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_spinner_item,
@@ -64,7 +64,7 @@ public class ComposePingActivity extends AppCompatActivity {
         spUrgency.setAdapter(urgencyAdapter);
         spUrgency.setSelection(0); // default: Normal
 
-        // ✅ Show/hide Role / Staff ID fields based on radio selection
+        //  Show/hide Role / Staff ID fields based on radio selection
         rgTarget.setOnCheckedChangeListener((group, checkedId) -> {
             if (checkedId == R.id.rbRole) {
                 etRole.setVisibility(View.VISIBLE);
@@ -83,7 +83,7 @@ public class ComposePingActivity extends AppCompatActivity {
         etRole.setVisibility(View.GONE);
         etStaffIds.setVisibility(View.GONE);
 
-        // ✅ Send button logic using real form values
+        //  Send button logic using real form values
         btnSend.setOnClickListener(v -> {
             // 1) Validate message
             String message = etMessage.getText().toString().trim();
@@ -175,7 +175,7 @@ public class ComposePingActivity extends AppCompatActivity {
         });
     }
 
-    // ✅ Handle back arrow click
+    //  Handle back arrow click
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();

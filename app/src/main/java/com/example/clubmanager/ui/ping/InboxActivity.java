@@ -24,7 +24,7 @@ public class InboxActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inbox);
 
-        // ✅ Enable back arrow in the top bar
+
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setTitle("Ping Inbox");
@@ -52,7 +52,7 @@ public class InboxActivity extends AppCompatActivity {
         list.setAdapter(adapter);
     }
 
-    // ✅ Handle back arrow click
+    //  Handle back arrow click
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();

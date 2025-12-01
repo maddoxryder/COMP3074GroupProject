@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="appBackground">#0F172A</color>      <!-- dark navy -->
+    <color name="cardBackground">#111827</color>     <!-- slightly lighter card -->
+    <color name="accentPrimary">#38BDF8</color>      <!-- soft cyan/blue accent -->
+    <color name="textPrimary">#F3F4F6</color>        <!-- near-white text -->
+    <color name="textSecondary">#D1D5DB</color>      <!-- muted gray text -->
+    <color name="textOnAccent">#FFFFFF</color>       <!-- text on buttons -->
+    <color name="divider">#1F2937</color>            <!-- subtle divider line -->
+    <color name="white">#FFFFFF</color>
+    <color name="backgroundPrimary">#0F172A</color>
 </resources>

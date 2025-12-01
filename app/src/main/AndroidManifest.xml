@@ -30,6 +30,7 @@
         <activity android:name=".OrdersActivity" android:exported="false" />
         <activity android:name=".InventoryActivity" android:exported="false" />
         <activity android:name=".SettingsActivity" android:exported="false" />
+        <activity android:name=".UserProfileActivity" android:exported="false" />
 
     </application>
 

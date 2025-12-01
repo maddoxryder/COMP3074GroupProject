@@ -58,8 +58,8 @@
                 android:layout_marginHorizontal="12dp"
                 android:padding="12dp"
                 android:textColor="@color/textPrimary"
-                android:textColorHint="@color/textSecondary"
-                android:background="@drawable/input_background" />
+                android:textColorHint="@color/textSecondary" />
+
 
             <!-- Password -->
             <EditText
@@ -72,8 +72,8 @@
                 android:layout_marginHorizontal="12dp"
                 android:padding="12dp"
                 android:textColor="@color/textPrimary"
-                android:textColorHint="@color/textSecondary"
-                android:background="@drawable/input_background" />
+                android:textColorHint="@color/textSecondary" />
+
 
             <!-- Login Button -->
             <Button

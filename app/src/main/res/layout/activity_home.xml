@@ -156,6 +156,28 @@
                         android:textAllCaps="false"
                         android:backgroundTint="@color/accentPrimary"
                         android:textColor="@color/textOnAccent" />
+
+                    <Button
+                        android:id="@+id/btnPings"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:text="Pings"
+                        android:textAllCaps="false"
+                        android:backgroundTint="@color/accentPrimary"
+                        android:textColor="@color/textOnAccent" />
+
+                    <Button
+                        android:id="@+id/btnPingInbox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:text="Ping Inbox"
+                        android:textAllCaps="false"
+                        android:backgroundTint="@color/accentPrimary"
+                        android:textColor="@color/textOnAccent" />
+
+
                 </GridLayout>
 
             </LinearLayout>

@@ -10,9 +10,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import com.example.comp3074uiwireframe.R; // This should be your app's R
-// Make sure there is NO "import android.R;"
+import com.example.comp3074uiwireframe.R;
+import com.example.clubmanager.ui.ping.ComposePingActivity;
+import com.example.clubmanager.ui.ping.InboxActivity;
 
+// Make sure there is NO "import android.R;"
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -31,6 +33,18 @@ public class HomeActivity extends AppCompatActivity {
         btnOrders = findViewById(R.id.btnOrders);
         btnTasks = findViewById(R.id.btnTasks);
         btnSettings = findViewById(R.id.btnSettings);
+        Button btnPings = findViewById(R.id.btnPings);
+        btnPings.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, ComposePingActivity.class);
+            startActivity(intent);
+        });
+
+        Button btnPingInbox = findViewById(R.id.btnPingInbox);
+        btnPingInbox.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, InboxActivity.class);
+            startActivity(intent);
+        });
+
 
         // Tasks screen — pass role to TasksActivity
         btnTasks.setOnClickListener(v -> {

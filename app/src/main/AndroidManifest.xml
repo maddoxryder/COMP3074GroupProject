@@ -31,6 +31,13 @@
         <activity android:name=".InventoryActivity" android:exported="false" />
         <activity android:name=".SettingsActivity" android:exported="false" />
         <activity android:name=".UserProfileActivity" android:exported="false" />
+        <activity
+            android:name="com.example.clubmanager.ui.ping.ComposePingActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.clubmanager.ui.ping.InboxActivity"
+            android:exported="false" />
+
 
     </application>
 
